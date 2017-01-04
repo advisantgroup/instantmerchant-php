@@ -6,80 +6,49 @@ class Direct_payment extends Api_resource
 	/**
 	 * [charge - It describes that the amount is charged for customer]
 	 * @param  [array] $params     [It has array of data]
-	 * @param  [string] $api_secret [The api secret key for authentication]
-	 * @param  [string] $api_key    [The api key for authentication]
-	 * @return [void]             [Return notification whether it is success or not]
+	 * @return [void]             [Return notification with true or false status]
 	 */
-	public function charge($params, $api_secret, $api_key)
+	public function charge($params)
 	{
-		if(!$params || !$api_secret || !$api_key)
+		if(!$params)
 		{
-			echo "Need to send the params, secret key and api key";
-			die();
+			return "Need to send the params";
 		}
-		if($params['version'] == 'v2')
-		{
-			$url = $this->base_url . "/v2/charge";
-		}
-		else
-		{
-			$url = $this->base_url . "/v1/charge";
-		}
-		$curl= $this->curlCall($url, http_build_query($params), $api_key, $api_secret,'post');
-		echo $curl;
+		$url = $this->url ."/charge";
+		$curl= $this->curlCall($url, http_build_query($params),'post');
+		return $curl;
 	}
 
 	/**
 	 * [capture -It describe that it capture the amount]
 	 * @param  [array] $params     [It has array of data]
-	 * @param  [string] $api_secret [The api secret key for authentication]
-	 * @param  [string] $api_key    [The api key for authentication]
-	 * @return [void]             [Return notification whether it is success or not]
+	 * @return [void]             [Return notification with true or false status]
 	 */
-	public function capture($params, $api_secret, $api_key)
+	public function capture($params)
 	{
-		if(!$params || !$api_secret || !$api_key)
+		if(!$params)
 		{
-			echo "Need to send the params, secret key and api key";
-			die();
+			return "Need to send the params";
 		}
-		if($params['version'] == 'v2')
-		{
-			$url = $this->base_url . "/v2/capture";
-		}
-		else
-		{
-			$url = $this->base_url . "/v1/capture";
-		}
-		$curl= $this->curlCall($url, http_build_query($params), $api_key, $api_secret,'post');
-		echo $curl;
+		$url = $this->url ."/capture";
+		$curl= $this->curlCall($url, http_build_query($params),'post');
+		return $curl;
 	}
 
 	/**
 	 * [refund -It describe that it refund the amount to the customer]
 	 * @param  [array] $params     [It has array of data]
-	 * @param  [string] $api_secret [The api secret key for authentication]
-	 * @param  [string] $api_key    [The api key for authentication]
-	 * @return [void]             [Return notification whether it is success or not]
+	 * @return [void]             [Return notification with true or false status]
 	 */
-	public function refund($params, $api_secret, $api_key)
+	public function refund($params)
 	{
-		if(!$params || !$api_secret || !$api_key)
+		if(!$params)
 		{
-			echo "Need to send the params, secret key and api key";
-			die();
+			return "Need to send the params";
 		}
-		if($params['version'] == 'v2')
-		{
-			$url = $this->base_url . "/v2/refund";
-		}
-		else
-		{
-			$url = $this->base_url . "/v1/refund";
-		}
-		$curl= $this->curlCall($url, http_build_query($params), $api_key, $api_secret,'post');
-		echo $curl;
+		$url = $this->url ."/refund";
+		$curl= $this->curlCall($url, http_build_query($params), 'post');
+		return $curl;
 	}
 }
-
 ?>

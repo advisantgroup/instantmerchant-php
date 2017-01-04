@@ -3,22 +3,20 @@ require_once "Api_resource.php";
 
 class Customer extends Api_resource
 {
-	public function create_customer($params, $api_secret, $api_key)
+	/**
+	 * [create_customer -It describe that it create the customer]
+	 * @param  [array] $params [array of data]
+	 * @return [void]         [Return notification with true or false status]
+	 */
+	public function create($params)
 	{
-		if(!$params || !$api_secret || !$api_key)
+		if(!$params)
 		{
-			echo "Need to send the params, secret key and api key";
-			die();
+			return "Need to send the params";
 		}
-		if($params['version'] == 'v2')
-		{
-			$url = $this->base_url . "/v2/customer";
-		}
-		else
-		{
-			$url = $this->base_url . "/v1/customer";
-		}
-		$curl= $this->curlCall($url, http_build_query($params), $api_key, $api_secret,'post');
-		echo $curl;
+		$url = $this->url ."/customer";
+		$curl= $this->curlCall($url, http_build_query($params),'post');
+		return $curl;
 	}
 }
+?>
