@@ -1,5 +1,4 @@
 # instantmerchant Api-php
-A PHP wrapper for Instant Merchant API.
 =========
 
 A PHP reference implementation of the Instant Merchant API. See the full docs at <https://advisantgroup.github.io/InstantMerchant/>
