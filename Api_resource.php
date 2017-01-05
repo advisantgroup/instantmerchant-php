@@ -1,19 +1,22 @@
 <?php
+namespace Instantmerchant;
 
+require_once "Error_handler.php";
 class Api_resource
 {
-	/* Api base url */
-	/*public $base_url = "https://api.instantmerchant.io/api";
-	public $test_url = "https://api-staging.instantmerchant.io/api";*/
+	/* Api test url */
 	public $test_url='https://api-staging.instantmerchant.io/api/';
-	public $url='https://api.instantmerchant.io/api/';
+	/*Api live url*/
+	public $url='https://dev1.instantmerchant.io/api/';
 	/*Initialise the api key*/
 	protected $api_key=false;
 	/*Initialise api secret key*/
 	protected $api_secret=false;
 	/*Initialise the version*/
 	public $version;
+	/*Initialise the test*/
 	public $test;
+
 	/**
 	 * [init description]
 	 * @param  [type] $api_key    [The api key for authentication]
@@ -22,6 +25,10 @@ class Api_resource
 	 */
 	public function init($api_key, $api_secret, $version, $status)
 	{
+		if(empty($api_secret) || empty($api_key))
+		{
+			throw new Img_Missing_Auth_For_Request();
+		}
 		$this->api_key = $api_key;
 		$this->api_secret = $api_secret;
 		$this->version = $version;
@@ -55,12 +62,13 @@ class Api_resource
 		    	curl_setopt($ch, CURLOPT_POST,1);
 				curl_setopt($ch, CURLOPT_POSTFIELDS,$params);
 				curl_setopt($ch, CURLOPT_URL, $url);
-	    	}else {
+	    	}elseif($http_verb=='get') {
+	    		//curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($http_verb));
+	    		curl_setopt($ch, CURLOPT_URL, "$url?$params");
+	    	}else{
 	    		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($http_verb));
-	    		if ($params)
-	    			curl_setopt($ch, CURLOPT_URL, "$url?$params");
-	    		else
-					curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_POSTFIELDS,$params);
+	    		curl_setopt($ch, CURLOPT_URL, $url);
 	    	}
 	    } else {
 			curl_setopt($ch, CURLOPT_URL, $url);
@@ -73,6 +81,7 @@ class Api_resource
 		curl_setopt($ch, CURLOPT_VERBOSE, false);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$results = curl_exec($ch);
+		$info = curl_getinfo($ch);
 		return $results;
 	}
 
