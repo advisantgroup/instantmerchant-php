@@ -1,5 +1,5 @@
 <?php
-namespace Advisantgroup;
+namespace Instantmerchant;
 
 require_once "Api_resource.php";
 require_once "Error_handler.php";

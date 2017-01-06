@@ -47,13 +47,19 @@ echo $charge;
   * [`refund(params)`](https://advisantgroup.github.io/InstantMerchant/#refund11)
  * customer
   * [`create(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
+  * [`retrieve(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
+  * [`update(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
+  * [`customer(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
+  * [`delete(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
  * subscription
-  * [`renew(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
+  * [`renewal(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
   * [`updateCard(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
   * [`cancel(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
  * card
-  * [`add(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
-  * [`get(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
+  * [`create(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
+  * [`retrieve(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
+  * [`delete(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
+  * [`card(params)`](https://advisantgroup.github.io/InstantMerchant/#create-customer)
 
 
 ## Release History

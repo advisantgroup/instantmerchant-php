@@ -1,5 +1,5 @@
 {
-    "name": "advisantgroup/instantmerchant-php",
+    "name": "instantmerchant/instantmerchant-php",
     "license": "MIT",
     "description": "A PHP wrapper for Emma's API.",
 	"version": "1.0.1",
