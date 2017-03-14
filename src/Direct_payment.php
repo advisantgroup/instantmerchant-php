@@ -1,5 +1,5 @@
 <?php
-namespace Instantmerchant;
+// namespace Instantmerchant;
 
 require_once "Api_resource.php";
 require_once "Error_handler.php";
@@ -17,9 +17,10 @@ class Direct_payment extends Api_resource
 		{
 			throw new Img_params_missing();
 		}
-		$url = $this->url ."/charge";
+		$url = $this->url ."/charges";
 		$curl= $this->curlCall($url, http_build_query($params),'post');
 		$json_obj = json_decode($curl);
+		return $json_obj;
 		if($json_obj->status == false)
 		{
 			throw new Img_false_status($json_obj->message);	

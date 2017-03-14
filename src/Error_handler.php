@@ -1,5 +1,5 @@
 <?php
-namespace Instantmerchant;
+// namespace Instantmerchant;
 
 class Img_params_missing extends Exception 
 {

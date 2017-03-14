@@ -1,13 +1,13 @@
 <?php
-namespace Instantmerchant;
+// namespace Instantmerchant;
 
 require_once "Error_handler.php";
 class Api_resource
 {
 	/* Api test url */
-	public $test_url='https://api-staging.instantmerchant.io/api/';
+	public $test_url='https://api-staging.instantmerchant.io/api/v1';
 	/*Api live url*/
-	public $url='https://dev1.instantmerchant.io/api/';
+	public $url='https://dev1.instantmerchant.io/api/v1';
 	/*Initialise the api key*/
 	protected $api_key=false;
 	/*Initialise api secret key*/
@@ -23,7 +23,7 @@ class Api_resource
 	 * @param  [string] $api_secret [The api secret key for authentication]
 	 * @return [void]             [return the value of api secret and api key]
 	 */
-	public function init($api_key, $api_secret, $version, $status)
+	public function init($api_key, $api_secret, $status)
 	{
 		if(empty($api_secret) || empty($api_key))
 		{
@@ -31,16 +31,16 @@ class Api_resource
 		}
 		$this->api_key = $api_key;
 		$this->api_secret = $api_secret;
-		$this->version = $version;
+		// $this->version = $version;
 		$this->test = $status;
 		
 		if($this->test == false)
 		{
-			$this->url .= $this->version;
+			$this->url = $this->url;
 		}
 		else
 		{
-			$this->url = $this->test_url . $this->version;
+			$this->url = $this->test_url;
 		}
 	}
 	

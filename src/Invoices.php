@@ -1,5 +1,5 @@
 <?php
-namespace Instantmerchant;
+// namespace Instantmerchant;
 
 require_once "Api_resource.php";
 require_once "Error_handler.php";
@@ -17,8 +17,8 @@ class Invoices extends Api_resource
 		{
 			throw new Img_params_missing();
 		}
-		$url = $this->url ."/invoice";
-		$curl= $this->curlCall($url, http_build_query($params),'post');
+		$url = $this->url ."/invoices";
+		$curl= $this->curlCall($url, http_build_query($params),'POST');
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)
 		{
@@ -38,7 +38,7 @@ class Invoices extends Api_resource
 		{
 			throw new Img_params_missing();
 		}
-		$url = $this->url ."/invoice/send";
+		$url = $this->url ."/invoices/send";
 		$curl= $this->curlCall($url, http_build_query($params),'post');
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)
@@ -103,6 +103,55 @@ class Invoices extends Api_resource
 		}
 		$url = $this->url ."/invoice/refund";
 		$curl= $this->curlCall($url, http_build_query($params),'post');
+		$json_obj = json_decode($curl);
+		if($json_obj->status == false)
+		{
+			throw new Img_false_status($json_obj->message);	
+		}
+		return $curl;
+	}
+
+	public function archive($params)
+	{
+		if (!$params)
+		{
+			throw new Img_params_missing();
+		}
+		$url = $this->url."/invoices/".$params['invoice_num']."/archive";
+		$curl= $this->curlCall($url, http_build_query($params),'get');
+		$json_obj = json_decode($curl);
+		if($json_obj->status == false)
+		{
+			throw new Img_false_status($json_obj->message);	
+		}
+		return $curl;
+	}
+
+	public function unarchive($params)
+	{
+		if (!$params)
+		{
+			throw new Img_params_missing();
+		}
+		$url = $this->url."/invoices/".$params['invoice_num']."/unarchive";
+		$curl= $this->curlCall($url, http_build_query($params),'get');
+		$json_obj = json_decode($curl);
+		if($json_obj->status == false)
+		{
+			throw new Img_false_status($json_obj->message);	
+		}
+		return $curl;
+	}
+
+	public function retrieve($params)
+	{
+		if (!$params)
+		{
+			throw new Img_params_missing();
+		}
+		$url = $this->url."/invoices?invoice_num=".$params['invoice_num'];
+		$curl= $this->curlCall($url, http_build_query($params),'get');
+		return $curl;
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)
 		{
