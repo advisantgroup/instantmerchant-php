@@ -7,7 +7,7 @@ require_once "Error_handler.php";
 class Card extends Api_resource
 {
 	/**
-	 * [create_card - It describe that it create the new card for the customer]
+	 * [create - It describe that it create the new card for the customer]
 	 * @param  [array] $params [array of data]
 	 * @return [void]         [Return notification only if it is true,else throw exception]
 	 */
@@ -28,7 +28,7 @@ class Card extends Api_resource
 	}
 
 	/**
-	 * [retrieve_card - It describe that it retrieve the card details]
+	 * [retrieve - It describe that it retrieve the card details]
 	 * @param  [array] $params [array of data]
 	 * @return [void]         [Return notification only if it is true,else throw exception]
 	 */
@@ -38,7 +38,7 @@ class Card extends Api_resource
 		{
 			throw new Img_params_missing();
 		}
-		$url = $this->url ."/card";
+		$url = $this->url ."/card?customer=".$params['customer']."&card_id=".$params['card_id'];
 		$curl= $this->curlCall($url, http_build_query($params),'get');
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)
@@ -49,7 +49,7 @@ class Card extends Api_resource
 	}
 
 	/**
-	 * [update_card - It describe that it update the existing card details]
+	 * [update - It describe that it update the existing card details]
 	 * @param  [array] $params [array of data]
 	 * @return [void]         [Return notification only if it is true,else throw exception]
 	 */
@@ -70,17 +70,17 @@ class Card extends Api_resource
 	}
 
 	/**
-	 * [card - It describe that it list the cards for the customer]
+	 * [list - It describe that it list the cards for the customer]
 	 * @param  [array] $params [array of data]
 	 * @return [void]         [Return notification only if it is true,else throw exception]
 	 */
-	public function card($params)
+	public function list($params)
 	{
 		if(!$params)
 		{
 			throw new Img_params_missing();
 		}
-		$url = $this->url ."/card";
+		$url = $this->url ."/card?customer=".$params['customer'];
 		$curl= $this->curlCall($url, http_build_query($params),'get');
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)

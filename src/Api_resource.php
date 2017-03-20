@@ -6,8 +6,8 @@ class Api_resource
 {
 	/* Api test url */
 	public $test_url='https://api-staging.instantmerchant.io/api/v1';
-	/*Api live url*/
-	public $url='https://dev1.instantmerchant.io/api/v1';
+	/*Api live url https://dev1.instantmerchant.io*/
+	public $url='http://api.instantmerchant.dev/api/v1';
 	/*Initialise the api key*/
 	protected $api_key=false;
 	/*Initialise api secret key*/
@@ -64,7 +64,7 @@ class Api_resource
 				curl_setopt($ch, CURLOPT_URL, $url);
 	    	}elseif($http_verb=='get') {
 	    		//curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($http_verb));
-	    		curl_setopt($ch, CURLOPT_URL, "$url?$params");
+	    		curl_setopt($ch, CURLOPT_URL, "$url");
 	    	}else{
 	    		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($http_verb));
 				curl_setopt($ch, CURLOPT_POSTFIELDS,$params);

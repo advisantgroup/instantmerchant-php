@@ -7,7 +7,7 @@ require_once "Error_handler.php";
 class Customer extends Api_resource
 {
 	/**
-	 * [create_customer -It describe that it create the customer]
+	 * [create -It describe that it create the customer]
 	 * @param  [array] $params [array of data]
 	 * @return [void]         [Return notification only if it is true,else throw exception]
 	 */
@@ -17,8 +17,8 @@ class Customer extends Api_resource
 		{
 			throw new Img_params_missing();
 		}
-		$url = $this->url ."/customer";
-		$curl= $this->curlCall($url, http_build_query($params),'get');
+		$url = $this->url ."/customers";
+		$curl= $this->curlCall($url, http_build_query($params),'POST');
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)
 		{
@@ -38,8 +38,8 @@ class Customer extends Api_resource
 		{
 			throw new Img_params_missing();
 		}
-		$url = $this->url ."/customer/customer/?id=".$params['customer_id'];
-		$curl= $this->curlCall($url, http_build_query($params),'get');
+		$url = $this->url ."/customers?id=".$params['customer_id'];
+		$curl= $this->curlCall($url, http_build_query($params),'GET');
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)
 		{
@@ -59,8 +59,8 @@ class Customer extends Api_resource
 		{
 			throw new Img_params_missing();
 		}
-		$url = $this->url ."/customer/update";
-		$curl= $this->curlCall($url, http_build_query($params),'post');
+		$url = $this->url ."/customers";
+		$curl= $this->curlCall($url, http_build_query($params),'PUT');
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)
 		{
@@ -70,35 +70,15 @@ class Customer extends Api_resource
 	}
 
 	/**
-	 * [delete -It describe that it delete the customer details]
-	 * @param  [array] $params [array of data]
-	 * @return [void]         [Return notification only if it is true,else throw exception]
-	 */
-	public function delete($params)
-	{
-		if(!$params)
-		{
-			throw new Img_params_missing();
-		}
-		$url = $this->url ."/customer";
-		$curl= $this->curlCall($url, http_build_query($params),'delete');
-		$json_obj = json_decode($curl);
-		if($json_obj->status == false)
-		{
-			throw new Img_false_status($json_obj->message);	
-		}
-		return $curl;
-	}
-
-	/**
-	 * [customer -It describe that it list all the customers]
+	 * [list -It describe that it list all the customers]
 	 * @return [void] [Return notification only if it is true,else throw exception]
 	 */
-	public function customer()
+	public function list()
 	{
-		$url = $this->url ."/customer/customer";
-		$curl= $this->curlCall($url, http_build_query($params),'get');
+		$url = $this->url ."/customers";
+		$curl= $this->curlCall($url, '','GET');
 		$json_obj = json_decode($curl);
+		// return $json_obj;
 		if($json_obj->status == false)
 		{
 			throw new Img_false_status($json_obj->message);	
