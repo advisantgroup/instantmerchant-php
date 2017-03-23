@@ -2,14 +2,15 @@
     "name": "instantmerchant/instantmerchant-php",
     "license": "MIT",
     "description": "A PHP wrapper for Instantmerchant's API.",
-	"version": "1.0.1",
     "minimum-stability": "dev",
     "require": {
-		"php": ">=5.6",
-		"ext-curl": "*",
-		"ext-json": "*",
-        "codeception/codeception": "*"
-	},
+        "php": ">=5.6",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "codeception/codeception" : "*"
+    },
     "autoload": {
         "psr-4": {
             "Instantmerchant\\" : "src/"

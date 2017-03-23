@@ -22,12 +22,18 @@ require_once('vendor/autoload.php');
 
 ##Instantiation
 ```php
-\Instantmerchant::init('D7ydiqzOF0weBCsd9zMGes9iyh1Mtqow', 'FMSOZJGhIfnDMeW6twEOWdcNf52CwuSe', 'v1', false);
-$params = array("payment_mode" => 'auth_and_capture', "invoice_num" => 82, "cardholder_name" => 'Jim', "card_number" => '4111111111111111', "exp_month"=> 11, "exp_year" => 2019, "cvc" => 123, "send_email" => 1, "save_card" => true, "is_default" => true, "card_id" => 'card_586cbfd8a3042' );
-try{
-$charge = \Instantmerchant::charge(array('params' => $params));
-echo $charge;
-}catch(Exception $e)
+$api_key = 'D7ydiqzOF0weBCsd9zMGes9iyh1Mtqow';
+$api_secret ='FMSOZJGhIfnDMeW6twEOWdcNf52CwuSe';
+$status = false;
+$params = array('name' => 'test','email' => 'test@gmail.com','description' => 'abc','amount' => '5','address' => 'xyz','city' => 'mno','state' => 'AL','country' => 'US','zip' => 641901,'invoice_num' => '','payment_mode' => 'auth_and_capture','payment_type' => 'recurring','cardholder_name' => 'test','card_number' => '4111111111111111','exp_month' => '02','exp_year' => '2020','cvc' => '251','send_email' => 1,'currency' => 'usd','customer' => 'new','create_customer' => '','interval' => '2','save_card' => '','is_default' => '','card_id' => '');
+try
+{
+  $test = new \Instantmerchant\Charges;
+  $test->init($api_key,$api_secret,$status);
+  $a = $test->create($params); 
+  echo $a;
+}
+catch(Exception $e)
 {
   echo $e->getMessage();
 }
