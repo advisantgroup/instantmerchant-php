@@ -1,6 +1,7 @@
 {
     "name": "instantmerchant/instantmerchant-php",
     "license": "MIT",
+    "version": "1.0.0",
     "description": "A PHP wrapper for Instantmerchant's API.",
     "minimum-stability": "dev",
     "require": {
