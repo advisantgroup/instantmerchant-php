@@ -11,13 +11,7 @@ A PHP reference implementation of the Instant Merchant API. See the full docs at
 You can install the bindings via [Composer](http://getcomposer.org/). Run the following command:
 
 ```bash
-composer require stripe/stripe-php
-```
-
-To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/00-intro.md#autoloading):
-
-```php
-require_once('vendor/autoload.php');
+composer require instantmerchant/instantmerchant-php
 ```
 
 ##Instantiation
