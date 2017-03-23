@@ -1,13 +1,13 @@
 <?php
-// namespace Instantmerchant;
+namespace Instantmerchant;
 
 require_once "Error_handler.php";
 class Api_resource
 {
 	/* Api test url */
 	public $test_url='https://api-staging.instantmerchant.io/api/v1';
-	/*Api live url https://dev1.instantmerchant.io*/
-	public $url='http://api.instantmerchant.dev/api/v1';
+	/*Api live url*/
+	public $url='https://dev1.instantmerchant.io/api/v1';
 	/*Initialise the api key*/
 	protected $api_key=false;
 	/*Initialise api secret key*/
@@ -18,7 +18,7 @@ class Api_resource
 	public $test;
 
 	/**
-	 * [init description]
+	 * [init - set the api key and secret key]
 	 * @param  [type] $api_key    [The api key for authentication]
 	 * @param  [string] $api_secret [The api secret key for authentication]
 	 * @return [void]             [return the value of api secret and api key]
@@ -27,7 +27,7 @@ class Api_resource
 	{
 		if(empty($api_secret) || empty($api_key))
 		{
-			throw new Img_Missing_Auth_For_Request();
+			throw new error\Img_Missing_Auth_For_Request();
 		}
 		$this->api_key = $api_key;
 		$this->api_secret = $api_secret;

@@ -1,5 +1,5 @@
 <?php 
-// namespace Instantmerchant;
+namespace Instantmerchant;
 
 require_once "Api_resource.php";
 require_once "Error_handler.php";
@@ -15,14 +15,14 @@ class Customer extends Api_resource
 	{
 		if(!$params)
 		{
-			throw new Img_params_missing();
+			throw new error\Img_params_missing();
 		}
 		$url = $this->url ."/customers";
 		$curl= $this->curlCall($url, http_build_query($params),'POST');
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)
 		{
-			throw new Img_false_status($json_obj->message);	
+			throw new error\Img_false_status($json_obj->message);	
 		}
 		return $curl;
 	}
@@ -36,14 +36,14 @@ class Customer extends Api_resource
 	{
 		if(!$params)
 		{
-			throw new Img_params_missing();
+			throw new error\Img_params_missing();
 		}
 		$url = $this->url ."/customers?id=".$params['customer_id'];
 		$curl= $this->curlCall($url, http_build_query($params),'GET');
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)
 		{
-			throw new Img_false_status($json_obj->message);	
+			throw new error\Img_false_status($json_obj->message);	
 		}
 		return $curl;
 	}
@@ -57,14 +57,14 @@ class Customer extends Api_resource
 	{
 		if(!$params)
 		{
-			throw new Img_params_missing();
+			throw new error\Img_params_missing();
 		}
 		$url = $this->url ."/customers";
 		$curl= $this->curlCall($url, http_build_query($params),'PUT');
 		$json_obj = json_decode($curl);
 		if($json_obj->status == false)
 		{
-			throw new Img_false_status($json_obj->message);	
+			throw new error\Img_false_status($json_obj->message);	
 		}
 		return $curl;
 	}
@@ -81,7 +81,7 @@ class Customer extends Api_resource
 		// return $json_obj;
 		if($json_obj->status == false)
 		{
-			throw new Img_false_status($json_obj->message);	
+			throw new error\Img_false_status($json_obj->message);	
 		}
 		return $curl;
 	}
