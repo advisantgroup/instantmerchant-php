@@ -6,7 +6,7 @@ A PHP reference implementation of the Instant Merchant API. See the full docs at
 * Official
 * REST API
 
-##Composer
+## Composer
 
 You can install the bindings via [Composer](http://getcomposer.org/). Run the following command:
 
@@ -14,7 +14,7 @@ You can install the bindings via [Composer](http://getcomposer.org/). Run the fo
 composer require instantmerchant/instantmerchant-php
 ```
 
-##Instantiation
+## Instantiation
 ```php
 $api_key = 'D7ydiqzOF0weBCsd9zMGes9iyh1Mtqow';
 $api_secret ='FMSOZJGhIfnDMeW6twEOWdcNf52CwuSe';
